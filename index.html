@@ -3,14 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ProToolsHub - 10+ free online tools. Compress images, count words, generate QR codes, create passwords, pick colors — all in your browser. No signup, no payment, 100% private.">
+  <meta name="keywords" content="free tools, online tools, image compressor, word counter, QR code generator, password generator, color picker, text case converter">
   <title>ProToolsHub - Free Online Tools & Digital Products</title>
-  <link rel="stylesheet" href="style.css">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%232563eb'/%3E%3Cstop offset='100%25' stop-color='%237c3aed'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='url(%23g)'/%3E%3Cpath d='M10 12 L16 8 L22 12 L22 20 L16 24 L10 20 Z' fill='white'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%232563eb'/%3E%3C/svg%3E">
+
+  <link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
 
   <!-- HEADER -->
   <header>
-    <div class="logo">ProToolsHub</div>
+    <div class="logo">
+      <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#2563eb"/>
+            <stop offset="100%" style="stop-color:#7c3aed"/>
+          </linearGradient>
+        </defs>
+        <rect x="2" y="2" width="28" height="28" rx="8" fill="url(#logoGrad)"/>
+        <path d="M10 12 L16 8 L22 12 L22 20 L16 24 L10 20 Z" fill="white" opacity="0.95"/>
+        <circle cx="16" cy="16" r="3" fill="#2563eb"/>
+      </svg>
+      <span>ProToolsHub</span>
+    </div>
     <nav>
       <a href="#home">Home</a>
       <a href="#tools">Tools</a>
@@ -22,9 +40,27 @@
   <!-- HERO SECTION -->
   <section id="home" class="hero">
     <div class="hero-content">
-      <h1>Free Online Tools & Digital Products</h1>
-      <p>Rozana kaam aane wale tools, templates aur digital products — sab ek jagah.</p>
-      <a href="#tools" class="btn">Tools Dekho</a>
+      <div class="badge">✨ 10+ Free Tools</div>
+      <h1>Free Tools. Zero Signup. <span class="highlight">Infinite Possibilities.</span></h1>
+      <p>Compress images, count words, generate QR codes, create passwords, pick colors, convert text — all in one place. No signup. No payment. 100% private.</p>
+      <div class="hero-buttons">
+        <a href="#tools" class="btn">🚀 Explore Tools</a>
+        <a href="#products" class="btn btn-outline-light">📦 View Products</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <strong>10+</strong>
+          <span>Free Tools</span>
+        </div>
+        <div class="stat">
+          <strong>100%</strong>
+          <span>Private</span>
+        </div>
+        <div class="stat">
+          <strong>24/7</strong>
+          <span>Available</span>
+        </div>
+      </div>
     </div>
     <div class="hero-image">
       <img src="images/1hero.png" alt="ProToolsHub">
@@ -34,23 +70,51 @@
   <!-- TOOLS SECTION -->
   <section id="tools" class="section">
     <h2>Our Tools</h2>
-    <p>Free me use karo, koi signup nahi chahiye.</p>
+    <p>Free to use. No signup required.</p>
     <div class="cards">
-      <div class="card">
+
+      <!-- Image Compressor -->
+      <a href="image-compressor.html" class="card" style="text-decoration: none; color: inherit;">
         <img src="images/2hero.png" alt="Image Compressor">
         <h3>Image Compressor</h3>
-        <p>Photo ka size chota karo, quality same rakho.</p>
-      </div>
-      <div class="card">
+        <p>Reduce image size without losing quality.</p>
+      </a>
+
+      <!-- Word Counter -->
+      <a href="word-counter.html" class="card" style="text-decoration: none; color: inherit;">
         <img src="images/3hero.png" alt="Word Counter">
         <h3>Word Counter</h3>
-        <p>Text me kitne words hain, turant gino.</p>
-      </div>
-      <div class="card">
+        <p>Count words, characters, and sentences instantly.</p>
+      </a>
+
+      <!-- QR Code Generator -->
+      <a href="qr-generator.html" class="card" style="text-decoration: none; color: inherit;">
         <img src="images/4hero.png" alt="QR Code Generator">
         <h3>QR Code Generator</h3>
-        <p>Kisi bhi link ka QR code banao free me.</p>
-      </div>
+        <p>Create QR codes for any link or text.</p>
+      </a>
+
+      <!-- Password Generator -->
+      <a href="password-generator.html" class="card" style="text-decoration: none; color: inherit;">
+        <img src="images/8hero.png" alt="Password Generator">
+        <h3>Password Generator</h3>
+        <p>Create strong and secure passwords.</p>
+      </a>
+
+      <!-- Color Picker -->
+      <a href="color-picker.html" class="card" style="text-decoration: none; color: inherit;">
+        <img src="images/9hero.png" alt="Color Picker">
+        <h3>Color Picker</h3>
+        <p>Pick colors and copy HEX/RGB codes.</p>
+      </a>
+
+      <!-- Text Case Converter -->
+      <a href="text-case-converter.html" class="card" style="text-decoration: none; color: inherit;">
+        <img src="images/10hero.png" alt="Text Case Converter">
+        <h3>Text Case Converter</h3>
+        <p>Convert text to UPPER, lower, Title, Sentence case.</p>
+      </a>
+
     </div>
   </section>
 
@@ -62,12 +126,12 @@
       <div class="card">
         <img src="images/5hero.png" alt="Website Templates">
         <h3>Website Templates</h3>
-        <p>Ready-made HTML templates — sirf naam badlo aur use karo.</p>
+        <p>Ready-made HTML templates — just add your name.</p>
       </div>
       <div class="card">
         <img src="images/6hero.png" alt="AI Prompts Pack">
         <h3>AI Prompts Pack</h3>
-        <p>ChatGPT ke liye 500+ ready prompts.</p>
+        <p>500+ ready prompts for ChatGPT.</p>
       </div>
       <div class="card">
         <img src="images/7hero.png" alt="Business Cards">
@@ -80,13 +144,14 @@
   <!-- CONTACT SECTION -->
   <section id="contact" class="section">
     <h2>Contact Us</h2>
-    <p>Koi sawaal? Humein message karo.</p>
+    <p>Have a question? Send us a message.</p>
     <p>Email: <a href="mailto:contact@protoolshub.com">contact@protoolshub.com</a></p>
   </section>
 
   <!-- FOOTER -->
   <footer>
     <p>© <span id="year"></span> ProToolsHub. All rights reserved.</p>
+    <p style="font-size: 13px; margin-top: 8px;">Free tools. Zero signup. Made for everyone.</p>
   </footer>
 
   <script src="script.js"></script>
