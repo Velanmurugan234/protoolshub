@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ProToolsHub - All-in-One tools for your digital life. BMI, Age Calculator, EMI Calculator, Unit Converter, Password Strength Checker and more.">
+  <title>ProToolsHub - All-in-One Tools for Your Digital Life</title>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%232563eb'/%3E%3Cstop offset='100%25' stop-color='%237c3aed'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='url(%23g)'/%3E%3Cpath d='M10 12 L16 8 L22 12 L22 20 L16 24 L10 20 Z' fill='white'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%232563eb'/%3E%3C/svg%3E">
+
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#2563eb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="ProToolsHub">
+
+  <link rel="stylesheet" href="style.css?v=19">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+      <svg width="40" height="40" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#2563eb"/>
+            <stop offset="100%" style="stop-color:#7c3aed"/>
+          </linearGradient>
+        </defs>
+        <rect x="2" y="2" width="28" height="28" rx="8" fill="url(#logoGrad)"/>
+        <path d="M10 12 L16 8 L22 12 L22 20 L16 24 L10 20 Z" fill="white" opacity="0.95"/>
+        <circle cx="16" cy="16" r="3" fill="#2563eb"/>
+      </svg>
+      <div class="logo-text">
+        <span class="logo-name">ProToolsHub</span>
+        <span class="logo-tagline" data-en="Smart Tools • Work Faster • Be Productive" data-hi="स्मार्ट टूल्स • तेज़ काम • ज़्यादा उत्पादक">Smart Tools • Work Faster • Be Productive</span>
+      </div>
+    </div>
+    <nav>
+      <a href="#home" data-en="Home" data-hi="होम">Home</a>
+      <a href="#tools" data-en="Categories" data-hi="श्रेणियाँ">Categories</a>
+      <a href="#products" data-en="Products" data-hi="उत्पाद">Products</a>
+      <a href="#contact" data-en="Contact" data-hi="संपर्क">Contact</a>
+      <a href="#" id="favoritesLink" data-en="⭐ Favorites" data-hi="⭐ पसंदीदा">⭐ Favorites</a>
+    </nav>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search tools..." data-en-placeholder="Search tools..." data-hi-placeholder="टूल्स खोजें...">
+      <span class="search-icon">🔍</span>
+    </div>
+    <div class="lang-selector">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="hi">हिं</button>
+    </div>
+    <button id="themeToggle" class="theme-toggle" title="Toggle Dark Mode">
+      <span id="themeIcon">🌙</span>
+    </button>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <div class="badge" data-en="⚡ 100+ Free Online Tools" data-hi="⚡ 100+ मुफ़्त ऑनलाइन टूल्स">⚡ 100+ Free Online Tools</div>
+      <h1 data-html="true" data-en='All-in-One Tools for <span class="highlight">Your Digital Life</span>' data-hi='आपकी डिजिटल लाइफ के लिए <span class="highlight">ऑल-इन-वन टूल्स</span>'>All-in-One Tools for <span class="highlight">Your Digital Life</span></h1>
+      <p data-en="Edit images, convert files, count words, generate QR codes, and much more — all in one place. Fast, free and easy to use!" data-hi="इमेज एडिट करें, फ़ाइल कन्वर्ट करें, शब्द गिनें, QR कोड बनाएँ — सब कुछ एक जगह। तेज़, मुफ़्त और आसान!">Edit images, convert files, count words, generate QR codes, and much more — all in one place. Fast, free and easy to use!</p>
+
+      <div class="hero-features">
+        <span data-en="⚡ Fast & Free" data-hi="⚡ तेज़ और मुफ़्त">⚡ Fast & Free</span>
+        <span data-en="🛡️ Secure & Safe" data-hi="🛡️ सुरक्षित">🛡️ Secure & Safe</span>
+        <span data-en="👥 No Signup Required" data-hi="👥 साइनअप की ज़रूरत नहीं">👥 No Signup Required</span>
+        <span data-en="💻 Works Everywhere" data-hi="💻 हर जगह काम करता है">💻 Works Everywhere</span>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="images/1hero.png" alt="ProToolsHub - All in One Tools">
+    </div>
+  </section>
+
+  <!-- RECENTLY USED -->
+  <section id="recent" class="section" style="display:none;">
+    <h2 data-en="Recently Used" data-hi="हाल में इस्तेमाल किए">Recently Used</h2>
+    <p data-en="Tools you've used recently." data-hi="वे टूल्स जो आपने हाल ही में इस्तेमाल किए।">Tools you've used recently.</p>
+    <div class="cards" id="recentCards"></div>
+  </section>
+
+  <!-- TOOLS SECTION -->
+  <section id="tools" class="section">
+    <h2 data-en="Our Tools" data-hi="हमारे टूल्स">Our Tools</h2>
+    <p data-en="Free to use. No signup required." data-hi="मुफ़्त इस्तेमाल करें। साइनअप की ज़रूरत नहीं।">Free to use. No signup required.</p>
+    <div class="cards">
+
+      <a href="image-compressor.html" class="card" style="text-decoration: none; color: inherit;" data-tool="image-compressor">
+        <button class="fav-btn" data-tool="image-compressor" title="Add to favorites">☆</button>
+        <img src="images/2hero.png" alt="Image Compressor">
+        <h3 data-en="Image Compressor" data-hi="इमेज कंप्रेसर">Image Compressor</h3>
+        <p data-en="Reduce image size without losing quality." data-hi="क्वालिटी बनाए रखते हुए इमेज साइज़ कम करें।">Reduce image size without losing quality.</p>
+      </a>
+
+      <a href="word-counter.html" class="card" style="text-decoration: none; color: inherit;" data-tool="word-counter">
+        <button class="fav-btn" data-tool="word-counter" title="Add to favorites">☆</button>
+        <img src="images/3hero.png" alt="Word Counter">
+        <h3 data-en="Word Counter" data-hi="वर्ड काउंटर">Word Counter</h3>
+        <p data-en="Count words, characters, and sentences instantly." data-hi="शब्द, अक्षर और वाक्य तुरंत गिनें।">Count words, characters, and sentences instantly.</p>
+      </a>
+
+      <a href="qr-generator.html" class="card" style="text-decoration: none; color: inherit;" data-tool="qr-generator">
+        <button class="fav-btn" data-tool="qr-generator" title="Add to favorites">☆</button>
+        <img src="images/4hero.png" alt="QR Code Generator">
+        <h3 data-en="QR Code Generator" data-hi="QR कोड जेनरेटर">QR Code Generator</h3>
+        <p data-en="Create QR codes for any link or text." data-hi="किसी भी लिंक या टेक्स्ट का QR कोड बनाएँ।">Create QR codes for any link or text.</p>
+      </a>
+
+      <a href="password-generator.html" class="card" style="text-decoration: none; color: inherit;" data-tool="password-generator">
+        <button class="fav-btn" data-tool="password-generator" title="Add to favorites">☆</button>
+        <img src="images/8hero.png" alt="Password Generator">
+        <h3 data-en="Password Generator" data-hi="पासवर्ड जेनरेटर">Password Generator</h3>
+        <p data-en="Create strong and secure passwords." data-hi="मज़बूत और सुरक्षित पासवर्ड बनाएँ।">Create strong and secure passwords.</p>
+      </a>
+
+      <a href="color-picker.html" class="card" style="text-decoration: none; color: inherit;" data-tool="color-picker">
+        <button class="fav-btn" data-tool="color-picker" title="Add to favorites">☆</button>
+        <img src="images/9hero.png" alt="Color Picker">
+        <h3 data-en="Color Picker" data-hi="कलर पिकर">Color Picker</h3>
+        <p data-en="Pick colors and copy HEX/RGB codes." data-hi="रंग चुनें और HEX/RGB कोड कॉपी करें।">Pick colors and copy HEX/RGB codes.</p>
+      </a>
+
+      <a href="text-case-converter.html" class="card" style="text-decoration: none; color: inherit;" data-tool="text-case-converter">
+        <button class="fav-btn" data-tool="text-case-converter" title="Add to favorites">☆</button>
+        <img src="images/10hero.png" alt="Text Case Converter">
+        <h3 data-en="Text Case Converter" data-hi="टेक्स्ट केस कन्वर्टर">Text Case Converter</h3>
+        <p data-en="Convert text to UPPER, lower, Title, Sentence case." data-hi="टेक्स्ट को UPPER, lower, Title, Sentence केस में बदलें।">Convert text to UPPER, lower, Title, Sentence case.</p>
+      </a>
+
+      <a href="age-calculator.html" class="card" style="text-decoration: none; color: inherit;" data-tool="age-calculator">
+        <button class="fav-btn" data-tool="age-calculator" title="Add to favorites">☆</button>
+        <img src="images/11hero.png" alt="Age Calculator">
+        <h3 data-en="Age Calculator" data-hi="उम्र कैलकुलेटर">Age Calculator</h3>
+        <p data-en="Exact age, zodiac, next birthday & more." data-hi="सटीक उम्र, राशि, अगला जन्मदिन और बहुत कुछ।">Exact age, zodiac, next birthday & more.</p>
+      </a>
+
+      <a href="bmi-calculator.html" class="card" style="text-decoration: none; color: inherit;" data-tool="bmi-calculator">
+        <button class="fav-btn" data-tool="bmi-calculator" title="Add to favorites">☆</button>
+        <img src="images/12hero.png" alt="BMI Calculator">
+        <h3 data-en="BMI Calculator" data-hi="BMI कैलकुलेटर">BMI Calculator</h3>
+        <p data-en="BMI, BMR, TDEE, body fat & more." data-hi="BMI, BMR, TDEE, बॉडी फैट और बहुत कुछ।">BMI, BMR, TDEE, body fat & more.</p>
+      </a>
+
+      <a href="emi-calculator.html" class="card" style="text-decoration: none; color: inherit;" data-tool="emi-calculator">
+        <button class="fav-btn" data-tool="emi-calculator" title="Add to favorites">☆</button>
+        <img src="images/13hero.png" alt="EMI Calculator">
+        <h3 data-en="EMI Calculator" data-hi="EMI कैलकुलेटर">EMI Calculator</h3>
+        <p data-en="EMI, amortization, prepayment & more." data-hi="EMI, अमोर्टाइज़ेशन, प्रीपेमेंट और बहुत कुछ।">EMI, amortization, prepayment & more.</p>
+      </a>
+
+      <a href="percentage-calculator.html" class="card" style="text-decoration: none; color: inherit;" data-tool="percentage-calculator">
+        <button class="fav-btn" data-tool="percentage-calculator" title="Add to favorites">☆</button>
+        <img src="images/14hero.png" alt="Percentage Calculator">
+        <h3 data-en="Percentage Calculator" data-hi="प्रतिशत कैलकुलेटर">Percentage Calculator</h3>
+        <p data-en="Discount, GST, Tip, Marks, CGPA & more." data-hi="डिस्काउंट, GST, टिप, मार्क्स, CGPA और बहुत कुछ।">Discount, GST, Tip, Marks, CGPA & more.</p>
+      </a>
+
+      <a href="unit-converter.html" class="card" style="text-decoration: none; color: inherit;" data-tool="unit-converter">
+        <button class="fav-btn" data-tool="unit-converter" title="Add to favorites">☆</button>
+        <img src="images/15hero.png" alt="Unit Converter">
+        <h3 data-en="Unit Converter" data-hi="यूनिट कन्वर्टर">Unit Converter</h3>
+        <p data-en="Length, weight, temperature & more." data-hi="लंबाई, वज़न, तापमान और बहुत कुछ।">Length, weight, temperature & more.</p>
+      </a>
+
+      <a href="stopwatch-timer.html" class="card" style="text-decoration: none; color: inherit;" data-tool="stopwatch-timer">
+        <button class="fav-btn" data-tool="stopwatch-timer" title="Add to favorites">☆</button>
+        <img src="images/16hero.png" alt="Stopwatch & Timer">
+        <h3 data-en="Stopwatch & Timer" data-hi="स्टॉपवॉच और टाइमर">Stopwatch & Timer</h3>
+        <p data-en="Track time with lap or set countdown timer." data-hi="लैप के साथ समय ट्रैक करें या उलटी गिनती टाइमर सेट करें।">Track time with lap or set countdown timer.</p>
+      </a>
+
+      <a href="random-number-generator.html" class="card" style="text-decoration: none; color: inherit;" data-tool="random-number-generator">
+        <button class="fav-btn" data-tool="random-number-generator" title="Add to favorites">☆</button>
+        <img src="images/17hero.png" alt="Random Number Generator">
+        <h3 data-en="Random Number Generator" data-hi="रैंडम नंबर जेनरेटर">Random Number Generator</h3>
+        <p data-en="Numbers, dice, coin flip & more." data-hi="नंबर, डाइस, कॉइन फ्लिप और बहुत कुछ।">Numbers, dice, coin flip & more.</p>
+      </a>
+
+      <a href="password-strength-checker.html" class="card" style="text-decoration: none; color: inherit;" data-tool="password-strength-checker">
+        <button class="fav-btn" data-tool="password-strength-checker" title="Add to favorites">☆</button>
+        <img src="images/18hero.png" alt="Password Strength Checker">
+        <h3 data-en="Password Strength Checker" data-hi="पासवर्ड स्ट्रेंथ चेकर">Password Strength Checker</h3>
+        <p data-en="Test your password strength & get suggestions." data-hi="पासवर्ड की मजबूती जाँचें और सुझाव पाएँ।">Test your password strength & get suggestions.</p>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- AD SLOT -->
+  <section class="section" style="padding-top: 0;">
+    <div class="ad-slot"></div>
+  </section>
+
+  <!-- PRODUCTS SECTION -->
+  <section id="products" class="section">
+    <h2 data-en="Digital Products" data-hi="डिजिटल उत्पाद">Digital Products</h2>
+    <p data-en="Premium quality, ready to use. Click any product to order via Instagram DM." data-hi="प्रीमियम क्वालिटी, इस्तेमाल के लिए तैयार। Instagram DM से ऑर्डर करने के लिए क्लिक करें।">Premium quality, ready to use. Click any product to order via Instagram DM.</p>
+    <div class="cards">
+
+      <!-- Website Templates -->
+      <a href="https://ig.me/m/protoolshub_official" target="_blank" class="card product-card" style="text-decoration: none; color: inherit;" data-product="Website Templates" data-price="₹499">
+        <img src="images/5hero.png" alt="Website Templates">
+        <h3 data-en="Website Templates" data-hi="वेबसाइट टेम्पलेट्स">Website Templates</h3>
+        <p data-en="Ready-made HTML templates — just add your name." data-hi="तैयार HTML टेम्पलेट्स — बस अपना नाम जोड़ें।">Ready-made HTML templates — just add your name.</p>
+        <span class="product-price">₹499</span>
+        <span class="product-cta">📩 Order on Instagram →</span>
+      </a>
+
+      <!-- AI Prompts Pack -->
+      <a href="https://ig.me/m/protoolshub_official" target="_blank" class="card product-card" style="text-decoration: none; color: inherit;" data-product="AI Prompts Pack" data-price="₹299">
+        <img src="images/6hero.png" alt="AI Prompts Pack">
+        <h3 data-en="AI Prompts Pack" data-hi="AI प्रॉम्प्ट्स पैक">AI Prompts Pack</h3>
+        <p data-en="500+ ready prompts for ChatGPT." data-hi="ChatGPT के लिए 500+ तैयार प्रॉम्प्ट्स।">500+ ready prompts for ChatGPT.</p>
+        <span class="product-price">₹299</span>
+        <span class="product-cta">📩 Order on Instagram →</span>
+      </a>
+
+      <!-- Business Cards -->
+      <a href="https://ig.me/m/protoolshub_official" target="_blank" class="card product-card" style="text-decoration: none; color: inherit;" data-product="Business Cards" data-price="₹199">
+        <img src="images/7hero.png" alt="Business Cards">
+        <h3 data-en="Business Cards" data-hi="बिज़नेस कार्ड्स">Business Cards</h3>
+        <p data-en="Designer business card templates." data-hi="डिज़ाइनर बिज़नेस कार्ड टेम्पलेट्स।">Designer business card templates.</p>
+        <span class="product-price">₹199</span>
+        <span class="product-cta">📩 Order on Instagram →</span>
+      </a>
+
+    </div>
+
+    <!-- TRUST BADGES -->
+    <div class="trust-badges">
+      <div class="trust-item">
+        <div class="trust-icon">🔒</div>
+        <div class="trust-title" data-en="100% Secure" data-hi="100% सुरक्षित">100% Secure</div>
+        <div class="trust-desc" data-en="Safe payment" data-hi="सुरक्षित भुगतान">Safe payment</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">⚡</div>
+        <div class="trust-title" data-en="Instant Delivery" data-hi="तुरंत डिलीवरी">Instant Delivery</div>
+        <div class="trust-desc" data-en="Within 5 minutes" data-hi="5 मिनट में">Within 5 minutes</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">💬</div>
+        <div class="trust-title" data-en="24/7 Support" data-hi="24/7 सपोर्ट">24/7 Support</div>
+        <div class="trust-desc" data-en="DM anytime" data-hi="कभी भी DM करें">DM anytime</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">✅</div>
+        <div class="trust-title" data-en="500+ Customers" data-hi="500+ ग्राहक">500+ Customers</div>
+        <div class="trust-desc" data-en="Trusted by many" data-hi="कई लोगों का भरोसा">Trusted by many</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PREMIUM PLAN -->
+  <section class="section" style="padding-top: 0;">
+    <div class="premium-card">
+      <h3 data-en="⭐ ProToolsHub Premium" data-hi="⭐ ProToolsHub प्रीमियम">⭐ ProToolsHub Premium</h3>
+      <p data-en="Unlock all advanced features" data-hi="सभी एडवांस्ड फ़ीचर्स अनलॉक करें">Unlock all advanced features</p>
+      <ul class="premium-features">
+        <li data-en="✅ No Ads — clean experience" data-hi="✅ कोई विज्ञापन नहीं — साफ़ अनुभव">✅ No Ads — clean experience</li>
+        <li data-en="✅ PDF Report Download" data-hi="✅ PDF रिपोर्ट डाउनलोड">✅ PDF Report Download</li>
+        <li data-en="✅ Weight Trend Graph" data-hi="✅ वज़न ट्रेंड ग्राफ़">✅ Weight Trend Graph</li>
+        <li data-en="✅ Multiple Profile Save" data-hi="✅ कई प्रोफ़ाइल सेव करें">✅ Multiple Profile Save</li>
+        <li data-en="✅ Priority Support" data-hi="✅ प्राथमिकता सपोर्ट">✅ Priority Support</li>
+        <li data-en="✅ Lifetime Access" data-hi="✅ लाइफ़टाइम एक्सेस">✅ Lifetime Access</li>
+      </ul>
+      <button class="premium-btn" onclick="showToast('Coming soon! 🚀', 'info')" data-en="Upgrade — ₹99" data-hi="अपग्रेड करें — ₹99">Upgrade — ₹99</button>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="section">
+    <h2 data-en="Contact Us" data-hi="संपर्क करें">Contact Us</h2>
+    <p data-en="Have a question? Send us a message." data-hi="कोई सवाल है? हमें संदेश भेजें।">Have a question? Send us a message.</p>
+    <p>Email: <a href="mailto:contact@protoolshub.com">contact@protoolshub.com</a></p>
+    <p>Instagram: <a href="https://instagram.com/protoolshub_official" target="_blank" data-en="DM us on Instagram" data-hi="Instagram पर DM करें">DM us on Instagram</a></p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© <span id="year"></span> ProToolsHub. <span data-en="All rights reserved." data-hi="सर्वाधिकार सुरक्षित।">All rights reserved.</span></p>
+    <p style="font-size: 13px; margin-top: 8px;" data-en="Free tools. Zero signup. Made for everyone." data-hi="मुफ़्त टूल्स। साइनअप की ज़रूरत नहीं। सबके लिए बनाया गया।">Free tools. Zero signup. Made for everyone.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

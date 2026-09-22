@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced EMI Calculator - ProToolsHub</title>
+  <meta name="description" content="Advanced EMI Calculator with amortization schedule, prepayment, loan comparison, balance transfer, eligibility — all in your browser.">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%232563eb'/%3E%3Cstop offset='100%25' stop-color='%237c3aed'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='url(%23g)'/%3E%3Cpath d='M10 12 L16 8 L22 12 L22 20 L16 24 L10 20 Z' fill='white'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%232563eb'/%3E%3C/svg%3E">
+
+  <link rel="stylesheet" href="style.css?v=12">
+  <link rel="stylesheet" href="tool.css?v=12">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a href="index.html" class="logo" style="text-decoration: none;">
+      <svg width="40" height="40" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#2563eb"/>
+            <stop offset="100%" style="stop-color:#7c3aed"/>
+          </linearGradient>
+        </defs>
+        <rect x="2" y="2" width="28" height="28" rx="8" fill="url(#logoGrad)"/>
+        <path d="M10 12 L16 8 L22 12 L22 20 L16 24 L10 20 Z" fill="white" opacity="0.95"/>
+        <circle cx="16" cy="16" r="3" fill="#2563eb"/>
+      </svg>
+      <div class="logo-text">
+        <span class="logo-name">ProToolsHub</span>
+        <span class="logo-tagline">Smart Tools • Work Faster • Be Productive</span>
+      </div>
+    </a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html#tools">Categories</a>
+      <a href="index.html#products">Products</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <button id="themeToggle" class="theme-toggle" title="Toggle Dark Mode">
+      <span id="themeIcon">🌙</span>
+    </button>
+  </header>
+
+  <!-- TOOL HERO -->
+  <section class="tool-hero">
+    <a href="index.html#tools" class="back-link">← Back to Tools</a>
+    <h1>💰 Advanced EMI Calculator</h1>
+    <p>Complete loan analysis — EMI, amortization, prepayment, comparison, eligibility and more.</p>
+  </section>
+
+  <!-- TOOL MAIN -->
+  <section class="tool-container">
+
+    <!-- TABS -->
+    <div class="age-tabs">
+      <button class="age-tab active" data-tab="emi">💰 EMI</button>
+      <button class="age-tab" data-tab="schedule">📅 Schedule</button>
+      <button class="age-tab" data-tab="prepay">⚡ Prepayment</button>
+      <button class="age-tab" data-tab="compare">📊 Compare</button>
+      <button class="age-tab" data-tab="eligible">✅ Eligibility</button>
+    </div>
+
+    <!-- ===== TAB 1: EMI CALCULATOR ===== -->
+    <div id="tab-emi" class="age-tab-content active">
+      <div class="tool-box">
+        <div class="input-group" style="margin-bottom:20px;">
+          <label>Loan Type</label>
+          <select id="loanType">
+            <option value="home">🏠 Home Loan</option>
+            <option value="car">🚗 Car Loan</option>
+            <option value="personal" selected>💼 Personal Loan</option>
+            <option value="education">🎓 Education Loan</option>
+            <option value="business">💼 Business Loan</option>
+            <option value="gold">🥇 Gold Loan</option>
+          </select>
+        </div>
+
+        <div class="bmi-inputs-grid">
+          <div class="input-group">
+            <label for="loanAmount">Loan Amount (₹)</label>
+            <input type="number" id="loanAmount" placeholder="500000" min="1000">
+          </div>
+          <div class="input-group">
+            <label for="interestRate">Interest Rate (% per annum)</label>
+            <input type="number" id="interestRate" placeholder="10.5" step="0.01" min="0.1" max="50">
+          </div>
+          <div class="input-group">
+            <label for="tenure">Tenure</label>
+            <div class="ft-in-row">
+              <input type="number" id="tenure" placeholder="5" min="1">
+              <select id="tenureUnit" style="flex:1;">
+                <option value="years" selected>Years</option>
+                <option value="months">Months</option>
+              </select>
+            </div>
+          </div>
+          <div class="input-group">
+            <label for="interestType">Interest Type</label>
+            <select id="interestType">
+              <option value="reducing" selected>Reducing Balance</option>
+              <option value="flat">Flat Rate</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label for="processingFee">Processing Fee (%) <small>optional</small></label>
+            <input type="number" id="processingFee" placeholder="1" step="0.1" min="0">
+          </div>
+          <div class="input-group">
+            <label for="gstRate">GST on Fee (%) <small>optional</small></label>
+            <input type="number" id="gstRate" placeholder="18" step="0.1" min="0" value="18">
+          </div>
+        </div>
+
+        <div class="tool-actions" style="justify-content:center;">
+          <button id="calculateBtn" class="btn-secondary">🎯 Calculate EMI</button>
+          <button id="saveBtn" class="btn-secondary">💾 Save</button>
+          <button id="resetBtn" class="btn-danger">🗑️ Reset</button>
+        </div>
+      </div>
+
+      <!-- RESULT -->
+      <div id="resultBox" style="display:none;">
+
+        <!-- Main EMI -->
+        <div class="emi-main-result">
+          <p class="age-label">Monthly EMI</p>
+          <div class="emi-value" id="emiValue">₹ 0</div>
+          <div class="emi-sub" id="emiSub">—</div>
+        </div>
+
+        <!-- Breakdown -->
+        <div class="age-info-grid">
+          <div class="age-info-card">
+            <div class="age-info-icon">💵</div>
+            <div class="age-info-title">Principal</div>
+            <div class="age-info-value" id="principalAmt">—</div>
+          </div>
+          <div class="age-info-card">
+            <div class="age-info-icon">📈</div>
+            <div class="age-info-title">Total Interest</div>
+            <div class="age-info-value" id="totalInterest">—</div>
+          </div>
+          <div class="age-info-card">
+            <div class="age-info-icon">💰</div>
+            <div class="age-info-title">Total Payment</div>
+            <div class="age-info-value" id="totalPayment">—</div>
+          </div>
+          <div class="age-info-card">
+            <div class="age-info-icon">📋</div>
+            <div class="age-info-title">Processing Fee</div>
+            <div class="age-info-value" id="totalFees">—</div>
+          </div>
+        </div>
+
+        <!-- Pie Chart -->
+        <div class="bmi-chart-box" style="margin-top:25px;">
+          <h3>📊 Principal vs Interest</h3>
+          <canvas id="pieChart" width="400" height="300" style="max-width:100%;"></canvas>
+        </div>
+
+        <!-- Actions -->
+        <div class="tool-actions" style="justify-content:center; margin-top:20px;">
+          <button id="shareBtn" class="btn-secondary">📤 Share</button>
+          <button id="copyBtn" class="btn-secondary">📋 Copy</button>
+          <button id="csvBtn" class="btn-secondary">📥 Download CSV</button>
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="medical-disclaimer">
+          ⚠️ <strong>Financial Disclaimer:</strong> This is an estimate only. Actual EMI may vary based on bank policies, processing fees, and other charges. Please consult your bank for exact figures.
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== TAB 2: AMORTIZATION SCHEDULE ===== -->
+    <div id="tab-schedule" class="age-tab-content">
+      <div class="tool-box">
+        <h3 style="margin-bottom:15px; color:#111827;">📅 Amortization Schedule</h3>
+        <p style="color:#6b7280; margin-bottom:20px; font-size:14px;">Calculate EMI first, then view month-wise breakdown.</p>
+        <div id="scheduleTable">
+          <p style="text-align:center; color:#6b7280; padding:30px;">No schedule yet. Calculate EMI first.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== TAB 3: PREPAYMENT ===== -->
+    <div id="tab-prepay" class="age-tab-content">
+      <div class="tool-box">
+        <h3 style="margin-bottom:20px; color:#111827;">⚡ Prepayment Calculator</h3>
+
+        <div class="bmi-inputs-grid">
+          <div class="input-group">
+            <label for="prepayAmount">Extra Payment (₹)</label>
+            <input type="number" id="prepayAmount" placeholder="50000" min="1000">
+          </div>
+          <div class="input-group">
+            <label for="prepayMonth">After How Many Months?</label>
+            <input type="number" id="prepayMonth" placeholder="12" min="1">
+          </div>
+        </div>
+
+        <div class="tool-actions" style="justify-content:center;">
+          <button id="calcPrepayBtn" class="btn-secondary">🎯 Calculate Savings</button>
+        </div>
+      </div>
+
+      <div id="prepayResult" style="display:none;">
+        <div class="age-info-grid">
+          <div class="age-info-card">
+            <div class="age-info-icon">💸</div>
+            <div class="age-info-title">Interest Saved</div>
+            <div class="age-info-value" id="savedInterest">—</div>
+          </div>
+          <div class="age-info-card">
+            <div class="age-info-icon">⏱️</div>
+            <div class="age-info-title">Tenure Reduced</div>
+            <div class="age-info-value" id="tenureReduced">—</div>
+          </div>
+          <div class="age-info-card">
+            <div class="age-info-icon">💰</div>
+            <div class="age-info-title">New Total Payment</div>
+            <div class="age-info-value" id="newTotalPay">—</div>
+          </div>
+          <div class="age-info-card">
+            <div class="age-info-icon">📅</div>
+            <div class="age-info-title">Loan Ends</div>
+            <div class="age-info-value" id="loanEndsIn">—</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== TAB 4: COMPARE ===== -->
+    <div id="tab-compare" class="age-tab-content">
+      <div class="tool-box">
+        <h3 style="margin-bottom:20px; color:#111827;">📊 Compare 2 Loans</h3>
+
+        <div class="bmi-inputs-grid">
+          <div class="input-group">
+            <label>Loan A - Amount (₹)</label>
+            <input type="number" id="loanA_amt" placeholder="500000">
+          </div>
+          <div class="input-group">
+            <label>Loan A - Rate (%)</label>
+            <input type="number" id="loanA_rate" placeholder="10.5" step="0.01">
+          </div>
+          <div class="input-group">
+            <label>Loan A - Tenure (years)</label>
+            <input type="number" id="loanA_ten" placeholder="5">
+          </div>
+          <div class="input-group">
+            <label>Loan A - Name</label>
+            <input type="text" id="loanA_name" placeholder="Bank A">
+          </div>
+          <div class="input-group">
+            <label>Loan B - Amount (₹)</label>
+            <input type="number" id="loanB_amt" placeholder="500000">
+          </div>
+          <div class="input-group">
+            <label>Loan B - Rate (%)</label>
+            <input type="number" id="loanB_rate" placeholder="9.5" step="0.01">
+          </div>
+          <div class="input-group">
+            <label>Loan B - Tenure (years)</label>
+            <input type="number" id="loanB_ten" placeholder="5">
+          </div>
+          <div class="input-group">
+            <label>Loan B - Name</label>
+            <input type="text" id="loanB_name" placeholder="Bank B">
+          </div>
+        </div>
+
+        <div class="tool-actions" style="justify-content:center;">
+          <button id="compareBtn" class="btn-secondary">🎯 Compare</button>
+        </div>
+      </div>
+
+      <div id="compareResult" style="display:none;">
+        <div class="compare-grid">
+          <div class="compare-card">
+            <h4 id="loanAName">Loan A</h4>
+            <div class="compare-row"><span>EMI</span><strong id="loanAEmi">—</strong></div>
+            <div class="compare-row"><span>Total Interest</span><strong id="loanAInt">—</strong></div>
+            <div class="compare-row"><span>Total Payment</span><strong id="loanATotal">—</strong></div>
+          </div>
+          <div class="compare-card">
+            <h4 id="loanBName">Loan B</h4>
+            <div class="compare-row"><span>EMI</span><strong id="loanBEmi">—</strong></div>
+            <div class="compare-row"><span>Total Interest</span><strong id="loanBInt">—</strong></div>
+            <div class="compare-row"><span>Total Payment</span><strong id="loanBTotal">—</strong></div>
+          </div>
+        </div>
+        <div class="bmi-tip-box" id="compareTip">
+          💡 <strong>Result:</strong> <span id="compareTipText">—</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== TAB 5: ELIGIBILITY ===== -->
+    <div id="tab-eligible" class="age-tab-content">
+      <div class="tool-box">
+        <h3 style="margin-bottom:20px; color:#111827;">✅ Loan Eligibility Calculator</h3>
+
+        <div class="bmi-inputs-grid">
+          <div class="input-group">
+            <label for="monthlyIncome">Monthly Income (₹)</label>
+            <input type="number" id="monthlyIncome" placeholder="50000">
+          </div>
+          <div class="input-group">
+            <label for="existingEmi">Existing EMIs (₹) <small>optional</small></label>
+            <input type="number" id="existingEmi" placeholder="0">
+          </div>
+          <div class="input-group">
+            <label for="eligRate">Interest Rate (%)</label>
+            <input type="number" id="eligRate" placeholder="10.5" step="0.01">
+          </div>
+          <div class="input-group">
+            <label for="eligTenure">Tenure (years)</label>
+            <input type="number" id="eligTenure" placeholder="20">
+          </div>
+          <div class="input-group">
+            <label for="foir">FOIR (%) <small>default 50%</small></label>
+            <input type="number" id="foir" placeholder="50" value="50">
+          </div>
+        </div>
+
+        <div class="tool-actions" style="justify-content:center;">
+          <button id="eligBtn" class="btn-secondary">🎯 Check Eligibility</button>
+        </div>
+      </div>
+
+      <div id="eligResult" style="display:none;">
+        <div class="emi-main-result" style="background: linear-gradient(135deg, #10b981, #059669);">
+          <p class="age-label">Maximum Loan Eligible</p>
+          <div class="emi-value" id="maxLoan">₹ 0</div>
+        </div>
+
+        <div class="age-info-grid">
+          <div class="age-info-card">
+            <div class="age-info-icon">💰</div>
+            <div class="age-info-title">Max EMI Possible</div>
+            <div class="age-info-value" id="maxEmi">—</div>
+          </div>
+          <div class="age-info-card">
+            <div class="age-info-icon">📊</div>
+            <div class="age-info-title">Available FOIR</div>
+            <div class="age-info-value" id="availFoir">—</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© <span id="year"></span> ProToolsHub. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>trackToolView("emi-calculator", "EMI Calculator", "images/13hero.png");</script>
+  <script src="emi-calculator.js"></script>
+</body>
+</html>

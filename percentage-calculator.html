@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Percentage Calculator - ProToolsHub</title>
+  <meta name="description" content="Advanced percentage calculator with discount, GST, tip, marks, CGPA, profit/loss and 10+ modes. Free, offline, no signup.">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%232563eb'/%3E%3Cstop offset='100%25' stop-color='%237c3aed'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='url(%23g)'/%3E%3Cpath d='M10 12 L16 8 L22 12 L22 20 L16 24 L10 20 Z' fill='white'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%232563eb'/%3E%3C/svg%3E">
+
+  <link rel="stylesheet" href="style.css?v=12">
+  <link rel="stylesheet" href="tool.css?v=12">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a href="index.html" class="logo" style="text-decoration: none;">
+      <svg width="40" height="40" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#2563eb"/>
+            <stop offset="100%" style="stop-color:#7c3aed"/>
+          </linearGradient>
+        </defs>
+        <rect x="2" y="2" width="28" height="28" rx="8" fill="url(#logoGrad)"/>
+        <path d="M10 12 L16 8 L22 12 L22 20 L16 24 L10 20 Z" fill="white" opacity="0.95"/>
+        <circle cx="16" cy="16" r="3" fill="#2563eb"/>
+      </svg>
+      <div class="logo-text">
+        <span class="logo-name">ProToolsHub</span>
+        <span class="logo-tagline">Smart Tools • Work Faster • Be Productive</span>
+      </div>
+    </a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html#tools">Categories</a>
+      <a href="index.html#products">Products</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <button id="themeToggle" class="theme-toggle" title="Toggle Dark Mode">
+      <span id="themeIcon">🌙</span>
+    </button>
+  </header>
+
+  <!-- TOOL HERO -->
+  <section class="tool-hero">
+    <a href="index.html#tools" class="back-link">← Back to Tools</a>
+    <h1>📊 Advanced Percentage Calculator</h1>
+    <p>10+ modes — Basic %, Discount, GST, Tip, Marks, CGPA, Profit/Loss and more.</p>
+  </section>
+
+  <!-- TOOL MAIN -->
+  <section class="tool-container">
+
+    <!-- MODE SELECTOR -->
+    <div class="mode-selector">
+      <button class="mode-btn active" data-mode="basic">%</button>
+      <button class="mode-btn" data-mode="discount">🏷️ Discount</button>
+      <button class="mode-btn" data-mode="gst">📋 GST</button>
+      <button class="mode-btn" data-mode="tip">🍽️ Tip</button>
+      <button class="mode-btn" data-mode="marks">📝 Marks</button>
+      <button class="mode-btn" data-mode="cgpa">🎓 CGPA</button>
+      <button class="mode-btn" data-mode="profit">💹 Profit</button>
+      <button class="mode-btn" data-mode="increase">📈 Increase</button>
+      <button class="mode-btn" data-mode="reverse">🔄 Reverse</button>
+      <button class="mode-btn" data-mode="error">⚠️ % Error</button>
+    </div>
+
+    <!-- RESULT DISPLAY -->
+    <div id="resultBox" class="pct-result-box" style="display:none;">
+      <div class="pct-main-result">
+        <p class="age-label">Result</p>
+        <div class="pct-value" id="pctResult">0</div>
+        <div class="pct-sub" id="pctSub">—</div>
+      </div>
+
+      <div class="pct-steps" id="pctSteps">
+        <strong>📐 Formula Used:</strong>
+        <div id="formulaText" class="formula-text">—</div>
+      </div>
+
+      <div class="tool-actions" style="justify-content:center; margin-top:20px;">
+        <button id="sharePctBtn" class="btn-secondary">📤 Share</button>
+        <button id="copyPctBtn" class="btn-secondary">📋 Copy</button>
+        <button id="historyBtn" class="btn-secondary">📜 History</button>
+      </div>
+    </div>
+
+    <!-- MODE 1: BASIC -->
+    <div class="mode-panel active" data-panel="basic">
+      <div class="tool-box">
+        <div class="tool-box-tabs">
+          <button class="sub-tab active" data-sub="pctof">X% of Y</button>
+          <button class="sub-tab" data-sub="whatpct">X is what % of Y</button>
+          <button class="sub-tab" data-sub="addpct">Add % to Number</button>
+          <button class="sub-tab" data-sub="subpct">Subtract % from Number</button>
+        </div>
+
+        <div class="basic-inputs">
+          <div class="input-group">
+            <label id="inp1Label">Percentage (%)</label>
+            <input type="number" id="basicA" placeholder="25">
+          </div>
+          <div class="input-group">
+            <label id="inp2Label">Number</label>
+            <input type="number" id="basicB" placeholder="500">
+          </div>
+        </div>
+
+        <div class="tool-actions" style="justify-content:center;">
+          <button id="basicCalcBtn" class="btn-secondary">🎯 Calculate</button>
+          <button id="basicResetBtn" class="btn-danger">🗑️ Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODE 2: DISCOUNT -->
+    <div class="mode-panel" data-panel="discount">
+      <div class="tool-box">
+        <div class="bmi-inputs-grid">
+          <div class="input-group">
+            <label>MRP / Original Price (₹)</label>
+            <input type="number" id="discMrp" placeholder="1000">
+          </div>
+          <div class="input-group">
+            <label>Discount (%)</label>
+            <input type="number" id="discPct" placeholder="20">
+          </div>
+        </div>
+        <div class="tool-actions" style="justify-content:center;">
+          <button id="discCalcBtn" class="btn-secondary">🎯 Calculate</button>
+          <button id="discResetBtn" class="btn-danger">🗑️ Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODE 3: GST -->
+    <div class="mode-panel" data-panel="gst">
+      <div class="tool-box">
+        <div class="tool-box-tabs">
+          <button class="sub-tab active" data-gstsub="add">Add GST</button>
+          <button class="sub-tab" data-gstsub="remove">Remove GST</button>
+        </div>
+
+        <div class="bmi-inputs-grid">
+          <div class="input-group">
+            <label>Amount (₹)</label>
+            <input type="number" id="gstAmt" placeholder="1000">
+          </div>
+          <div class="input-group">
+            <label>GST Rate</label>
+            <select id="gstRate">
+              <option value="5">5%</option>
+              <option value="12">12%</option>
+              <option value="18" selected>18%</option>
+              <option value="28">28%</option>
+            </select>
+          </div>
+        </div>
+        <div class="tool-actions" style="justify-content:center;">
+          <button id="gstCalcBtn" class="btn-secondary">🎯 Calculate</button>
+          <button id="gstResetBtn" class="btn-danger">🗑️ Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODE 4: TIP -->
+    <div class="mode-panel" data-panel="tip">
+      <div class="tool-box">
+        <div class="bmi-inputs-grid">
+          <div class="input-group">
+            <label>Bill Amount (₹)</label>
+            <input type="number" id="tipBill" placeholder="500">
+          </div>
+          <div class="input-group">
+            <label>Tip (%)</label>
+            <input type="number" id="tipPct" placeholder="10">
+          </div>
+          <div class="input-group">
+            <label>Split Between (people)</label>
+            <input type="number" id="tipPeople" placeholder="2" value="1" min="1">
+          </div>
+        </div>
+        <div class="tool-actions" style="justify-content:center;">
+          <button id="tipCalcBtn" class="btn-secondary">🎯 Calculate</button>
+          <button id="tipResetBtn" class="btn-danger">🗑️ Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODE 5: MARKS -->
+    <div class="mode-panel" data-panel="marks">
+      <div class="tool-box">
+        <div class="bmi-inputs-grid">
+          <div class="input-group">
+            <label>Marks Obtained</label>
+            <input type="number" id="marksObt" placeholder="450">
+          </div>
+          <div class="input-group">
+            <label>Total Marks</label>
+            <input type="number" id="marksTotal" placeholder="500">
+          </div>
+        </div>
+        <div class="tool-actions" style="justify-content:center;">
+          <button id="marksCalcBtn" class="btn-secondary">🎯 Calculate</button>
+          <button id="marksResetBtn" class="btn-danger">🗑️ Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODE 6: CGPA -->
+    <div class="mode-panel" data-panel="cgpa">
+      <div class="tool-box">
+        <div class="tool-box-tabs">
+          <button class="sub-tab active" data-cgpasub="toPct">CGPA → %</button>
+          <button class="sub-tab" data-cgpasub="toCgpa">% → CGPA</button>
+        </div>
+
+        <div class="input-group">
+          <label id="cgpaLabel">CGPA (0-10)</label>
+          <input type="number" id="cgpaInput" placeholder="8.5" step="0.01">
+        </div>
+
+        <div class="tool-actions" style="justify-content:center;">
+          <button id="cgpaCalcBtn" class="btn-secondary">🎯 Calculate</button>
+          <button id="cgpaResetBtn" class="btn-danger">🗑️ Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODE 7: PROFIT -->
+    <div class="mode-panel" data-panel="profit">
+      <div class="tool-box">
+        <div class="bmi-inputs-grid">
+          <div class="input-group">
+            <label>Cost Price (₹)</label>
+            <input type="number" id="profitCp" placeholder="500">
+          </div>
+          <div class="input-group">
+            <label>Selling Price (₹)</label>
+            <input type="number" id="profitSp" placeholder="600">
+          </div>
+        </div>
+        <div class="tool-actions" style="justify-content:center;">
+          <button id="profitCalcBtn" class="btn-secondary">🎯 Calculate</button>
+          <button id="profitResetBtn" class="btn-danger">🗑️ Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODE 8: INCREASE -->
+    <div class="mode-panel" data-panel="increase">
+      <div class="tool-box">
+        <div class="bmi-inputs-grid">
+          <div class="input-group">
+            <label>Original Value</label>
+            <input type="number" id="incFrom" placeholder="100">
+          </div>
+          <div class="input-group">
+            <label>New Value</label>
+            <input type="number" id="incTo" placeholder="150">
+          </div>
+        </div>
+        <div class="tool-actions" style="justify-content:center;">
+          <button id="incCalcBtn" class="btn-secondary">🎯 Calculate</button>
+          <button id="incResetBtn" class="btn-danger">🗑️ Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODE 9: REVERSE -->
+    <div class="mode-panel" data-panel="reverse">
+      <div class="tool-box">
+        <p style="color:#6b7280; margin-bottom:20px; font-size:14px;">
+          Example: Agar 25% = 125, to 100% = ?
+        </p>
+        <div class="bmi-inputs-grid">
+          <div class="input-group">
+            <label>Known Percentage (%)</label>
+            <input type="number" id="revPct" placeholder="25">
+          </div>
+          <div class="input-group">
+            <label>Known Value</label>
+            <input type="number" id="revVal" placeholder="125">
+          </div>
+        </div>
+        <div class="tool-actions" style="justify-content:center;">
+          <button id="revCalcBtn" class="btn-secondary">🎯 Calculate</button>
+          <button id="revResetBtn" class="btn-danger">🗑️ Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODE 10: % ERROR -->
+    <div class="mode-panel" data-panel="error">
+      <div class="tool-box">
+        <div class="bmi-inputs-grid">
+          <div class="input-group">
+            <label>Actual Value</label>
+            <input type="number" id="errActual" placeholder="100">
+          </div>
+          <div class="input-group">
+            <label>Observed / Measured Value</label>
+            <input type="number" id="errObserved" placeholder="105">
+          </div>
+        </div>
+        <div class="tool-actions" style="justify-content:center;">
+          <button id="errCalcBtn" class="btn-secondary">🎯 Calculate</button>
+          <button id="errResetBtn" class="btn-danger">🗑️ Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- FORMULA REFERENCE -->
+    <div class="tool-box" style="margin-top:30px;">
+      <h3 style="margin-bottom:15px; color:#111827;">📐 Quick Formulas</h3>
+      <ul style="color:#6b7280; padding-left:20px; line-height:2; font-size:14px;">
+        <li><strong>X% of Y</strong> = (X ÷ 100) × Y</li>
+        <li><strong>X is what % of Y</strong> = (X ÷ Y) × 100</li>
+        <li><strong>% Increase</strong> = ((New - Old) ÷ Old) × 100</li>
+        <li><strong>% Decrease</strong> = ((Old - New) ÷ Old) × 100</li>
+        <li><strong>Discount</strong> = MRP × (Discount% ÷ 100)</li>
+        <li><strong>Profit%</strong> = ((SP - CP) ÷ CP) × 100</li>
+        <li><strong>% Error</strong> = |(Actual - Observed) ÷ Actual| × 100</li>
+      </ul>
+
+      <div class="medical-disclaimer" style="margin-top:20px;">
+        ⚠️ <strong>Disclaimer:</strong> Ye educational estimate hai. GST/tax ke liye CA se consult karo. Financial advice nahi.
+      </div>
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© <span id="year"></span> ProToolsHub. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>trackToolView("percentage-calculator", "Percentage Calculator", "images/14hero.png");</script>
+  <script src="percentage-calculator.js"></script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Color Picker - ProToolsHub</title>
+  <meta name="description" content="Free online color picker. Get HEX, RGB, HSL color codes instantly. Works offline.">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%232563eb'/%3E%3Cstop offset='100%25' stop-color='%237c3aed'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='url(%23g)'/%3E%3Cpath d='M10 12 L16 8 L22 12 L22 20 L16 24 L10 20 Z' fill='white'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%232563eb'/%3E%3C/svg%3E">
+
+  <link rel="stylesheet" href="style.css?v=6">
+  <link rel="stylesheet" href="tool.css?v=6">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a href="index.html" class="logo" style="text-decoration: none;">
+      <svg width="40" height="40" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#2563eb"/>
+            <stop offset="100%" style="stop-color:#7c3aed"/>
+          </linearGradient>
+        </defs>
+        <rect x="2" y="2" width="28" height="28" rx="8" fill="url(#logoGrad)"/>
+        <path d="M10 12 L16 8 L22 12 L22 20 L16 24 L10 20 Z" fill="white" opacity="0.95"/>
+        <circle cx="16" cy="16" r="3" fill="#2563eb"/>
+      </svg>
+      <div class="logo-text">
+        <span class="logo-name">ProToolsHub</span>
+        <span class="logo-tagline">Smart Tools • Work Faster • Be Productive</span>
+      </div>
+    </a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html#tools">Categories</a>
+      <a href="index.html#products">Products</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <button id="themeToggle" class="theme-toggle" title="Toggle Dark Mode">
+      <span id="themeIcon">🌙</span>
+    </button>
+  </header>
+
+  <!-- TOOL HERO -->
+  <section class="tool-hero">
+    <a href="index.html#tools" class="back-link">← Back to Tools</a>
+    <h1>🎨 Color Picker</h1>
+    <p>Pick any color — get HEX, RGB, HSL codes instantly.</p>
+  </section>
+
+  <!-- TOOL MAIN -->
+  <section class="tool-container">
+
+    <!-- Color Display -->
+    <div class="tool-box">
+      <div class="color-preview" id="colorPreview">
+        <span id="colorPreviewText">#2563EB</span>
+      </div>
+
+      <div class="color-input-row">
+        <label for="colorPickerInput">Choose a color:</label>
+        <input type="color" id="colorPickerInput" value="#2563eb">
+      </div>
+    </div>
+
+    <!-- Color Codes -->
+    <div class="tool-box">
+      <h3 style="margin-bottom:20px; color:#111827;">Color Codes</h3>
+
+      <div class="code-row">
+        <div class="code-label">HEX</div>
+        <input type="text" id="hexCode" value="#2563EB" readonly>
+        <button class="copy-small" data-target="hexCode">📋</button>
+      </div>
+
+      <div class="code-row">
+        <div class="code-label">RGB</div>
+        <input type="text" id="rgbCode" value="rgb(37, 99, 235)" readonly>
+        <button class="copy-small" data-target="rgbCode">📋</button>
+      </div>
+
+      <div class="code-row">
+        <div class="code-label">HSL</div>
+        <input type="text" id="hslCode" value="hsl(217, 91%, 53%)" readonly>
+        <button class="copy-small" data-target="hslCode">📋</button>
+      </div>
+    </div>
+
+    <!-- Preset Colors -->
+    <div class="tool-box">
+      <h3 style="margin-bottom:20px; color:#111827;">Quick Colors</h3>
+      <div class="preset-colors" id="presetColors"></div>
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© <span id="year"></span> ProToolsHub. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="color-picker.js"></script>
+</body>
+</html>

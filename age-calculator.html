@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Age Calculator - ProToolsHub</title>
+  <meta name="description" content="Advanced age calculator with multiple profiles, zodiac signs, date difference, legal age checker, retirement calculator and more.">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%232563eb'/%3E%3Cstop offset='100%25' stop-color='%237c3aed'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='url(%23g)'/%3E%3Cpath d='M10 12 L16 8 L22 12 L22 20 L16 24 L10 20 Z' fill='white'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%232563eb'/%3E%3C/svg%3E">
+
+  <link rel="stylesheet" href="style.css?v=11">
+  <link rel="stylesheet" href="tool.css?v=11">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a href="index.html" class="logo" style="text-decoration: none;">
+      <svg width="40" height="40" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#2563eb"/>
+            <stop offset="100%" style="stop-color:#7c3aed"/>
+          </linearGradient>
+        </defs>
+        <rect x="2" y="2" width="28" height="28" rx="8" fill="url(#logoGrad)"/>
+        <path d="M10 12 L16 8 L22 12 L22 20 L16 24 L10 20 Z" fill="white" opacity="0.95"/>
+        <circle cx="16" cy="16" r="3" fill="#2563eb"/>
+      </svg>
+      <div class="logo-text">
+        <span class="logo-name">ProToolsHub</span>
+        <span class="logo-tagline">Smart Tools • Work Faster • Be Productive</span>
+      </div>
+    </a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html#tools">Categories</a>
+      <a href="index.html#products">Products</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <button id="themeToggle" class="theme-toggle" title="Toggle Dark Mode">
+      <span id="themeIcon">🌙</span>
+    </button>
+  </header>
+
+  <!-- TOOL HERO -->
+  <section class="tool-hero">
+    <a href="index.html#tools" class="back-link">← Back to Tools</a>
+    <h1>🎂 Advanced Age Calculator</h1>
+    <p>Multiple profiles, zodiac signs, date difference, legal age checker — sab kuch ek jagah.</p>
+  </section>
+
+  <!-- TOOL MAIN -->
+  <section class="tool-container">
+
+    <!-- TABS -->
+    <div class="age-tabs">
+      <button class="age-tab active" data-tab="age">🎂 Age Calculator</button>
+      <button class="age-tab" data-tab="diff">📅 Date Difference</button>
+      <button class="age-tab" data-tab="profiles">👥 Saved Profiles</button>
+    </div>
+
+    <!-- ===== TAB 1: AGE CALCULATOR ===== -->
+    <div id="tab-age" class="age-tab-content active">
+      <div class="tool-box">
+        <div class="age-inputs">
+          <div class="input-group">
+            <label for="dobInput">Date of Birth:</label>
+            <input type="date" id="dobInput">
+          </div>
+          <div class="input-group">
+            <label for="currentInput">Calculate Age On:</label>
+            <input type="date" id="currentInput">
+            <small class="input-hint">Leave as today for current age</small>
+          </div>
+        </div>
+
+        <div class="tool-actions" style="justify-content:center;">
+          <button id="calculateBtn" class="btn-secondary">🎯 Calculate Age</button>
+          <button id="saveProfileBtn" class="btn-secondary">💾 Save Profile</button>
+          <button id="resetBtn" class="btn-danger">🗑️ Reset</button>
+        </div>
+      </div>
+
+      <!-- Result -->
+      <div id="resultBox" style="display:none;">
+
+        <!-- Main Age -->
+        <div class="age-main-result">
+          <p class="age-label">Your Exact Age</p>
+          <div class="age-big" id="ageBigDisplay">0 Years, 0 Months, 0 Days</div>
+          <div class="age-sub" id="ageSubDisplay">—</div>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="age-stats-grid">
+          <div class="age-stat"><div class="age-stat-value" id="totalDays">0</div><div class="age-stat-label">Total Days</div></div>
+          <div class="age-stat"><div class="age-stat-value" id="totalWeeks">0</div><div class="age-stat-label">Total Weeks</div></div>
+          <div class="age-stat"><div class="age-stat-value" id="totalMonths">0</div><div class="age-stat-label">Total Months</div></div>
+          <div class="age-stat"><div class="age-stat-value" id="totalHours">0</div><div class="age-stat-label">Total Hours</div></div>
+          <div class="age-stat"><div class="age-stat-value" id="totalMinutes">0</div><div class="age-stat-label">Total Minutes</div></div>
+          <div class="age-stat"><div class="age-stat-value" id="totalSeconds">0</div><div class="age-stat-label">Total Seconds</div></div>
+        </div>
+
+        <!-- Fun Facts / Info Cards -->
+        <div class="age-info-grid">
+          <div class="age-info-card">
+            <div class="age-info-icon">📅</div>
+            <div class="age-info-title">Born On</div>
+            <div class="age-info-value" id="bornDay">—</div>
+          </div>
+          <div class="age-info-card">
+            <div class="age-info-icon">🎂</div>
+            <div class="age-info-title">Next Birthday</div>
+            <div class="age-info-value" id="nextBirthday">—</div>
+          </div>
+          <div class="age-info-card">
+            <div class="age-info-icon">⭐</div>
+            <div class="age-info-title">Zodiac Sign</div>
+            <div class="age-info-value" id="zodiacSign">—</div>
+          </div>
+          <div class="age-info-card">
+            <div class="age-info-icon">🐉</div>
+            <div class="age-info-title">Chinese Zodiac</div>
+            <div class="age-info-value" id="chineseZodiac">—</div>
+          </div>
+          <div class="age-info-card">
+            <div class="age-info-icon">💓</div>
+            <div class="age-info-title">Heartbeats</div>
+            <div class="age-info-value" id="heartbeats">—</div>
+          </div>
+          <div class="age-info-card">
+            <div class="age-info-icon">😴</div>
+            <div class="age-info-title">Sleep Hours</div>
+            <div class="age-info-value" id="sleepHours">—</div>
+          </div>
+        </div>
+
+        <!-- Legal & Retirement -->
+        <div class="age-info-grid" style="margin-top: 20px;">
+          <div class="age-info-card">
+            <div class="age-info-icon">⚖️</div>
+            <div class="age-info-title">Legal Age (18)</div>
+            <div class="age-info-value" id="legalAge">—</div>
+          </div>
+          <div class="age-info-card">
+            <div class="age-info-icon">🏢</div>
+            <div class="age-info-title">Legal Age (21)</div>
+            <div class="age-info-value" id="legalAge21">—</div>
+          </div>
+          <div class="age-info-card">
+            <div class="age-info-icon">🎯</div>
+            <div class="age-info-title">Retirement (60)</div>
+            <div class="age-info-value" id="retirement">—</div>
+          </div>
+          <div class="age-info-card">
+            <div class="age-info-icon">👶</div>
+            <div class="age-info-title">Baby Age</div>
+            <div class="age-info-value" id="babyAge">—</div>
+          </div>
+        </div>
+
+        <!-- Share -->
+        <div class="tool-actions" style="justify-content:center; margin-top: 25px;">
+          <button id="shareBtn" class="btn-secondary">📤 Share Result</button>
+          <button id="copyResultBtn" class="btn-secondary">📋 Copy Result</button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===== TAB 2: DATE DIFFERENCE ===== -->
+    <div id="tab-diff" class="age-tab-content">
+      <div class="tool-box">
+        <h3 style="margin-bottom:20px; color:#111827;">📅 Date Difference Calculator</h3>
+        <div class="age-inputs">
+          <div class="input-group">
+            <label for="date1">From Date:</label>
+            <input type="date" id="date1">
+          </div>
+          <div class="input-group">
+            <label for="date2">To Date:</label>
+            <input type="date" id="date2">
+          </div>
+        </div>
+
+        <div class="tool-actions" style="justify-content:center;">
+          <button id="calcDiffBtn" class="btn-secondary">🎯 Calculate Difference</button>
+          <button id="resetDiffBtn" class="btn-danger">🗑️ Reset</button>
+        </div>
+      </div>
+
+      <div id="diffResultBox" style="display:none;">
+        <div class="age-main-result">
+          <p class="age-label">Difference</p>
+          <div class="age-big" id="diffBigDisplay">0 Years, 0 Months, 0 Days</div>
+          <div class="age-sub" id="diffSubDisplay">—</div>
+        </div>
+
+        <div class="age-stats-grid">
+          <div class="age-stat"><div class="age-stat-value" id="diffDays">0</div><div class="age-stat-label">Days</div></div>
+          <div class="age-stat"><div class="age-stat-value" id="diffWeeks">0</div><div class="age-stat-label">Weeks</div></div>
+          <div class="age-stat"><div class="age-stat-value" id="diffMonths">0</div><div class="age-stat-label">Months</div></div>
+          <div class="age-stat"><div class="age-stat-value" id="diffHours">0</div><div class="age-stat-label">Hours</div></div>
+          <div class="age-stat"><div class="age-stat-value" id="diffMinutes">0</div><div class="age-stat-label">Minutes</div></div>
+          <div class="age-stat"><div class="age-stat-value" id="diffSeconds">0</div><div class="age-stat-label">Seconds</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== TAB 3: SAVED PROFILES ===== -->
+    <div id="tab-profiles" class="age-tab-content">
+      <div class="tool-box">
+        <h3 style="margin-bottom:20px; color:#111827;">👥 Saved Profiles</h3>
+        <div id="profilesList">
+          <p style="text-align:center; color:#6b7280; padding:30px;">
+            No profiles saved yet. Calculate an age and click "Save Profile".
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© <span id="year"></span> ProToolsHub. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>trackToolView("age-calculator", "Age Calculator", "images/11hero.png");</script>
+  <script src="age-calculator.js"></script>
+</body>
+</html>

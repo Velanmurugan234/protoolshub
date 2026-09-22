@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stopwatch & Timer - ProToolsHub</title>
+  <meta name="description" content="Free online stopwatch and timer. Track time with lap feature or set countdown timer with alarm.">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%232563eb'/%3E%3Cstop offset='100%25' stop-color='%237c3aed'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='url(%23g)'/%3E%3Cpath d='M10 12 L16 8 L22 12 L22 20 L16 24 L10 20 Z' fill='white'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%232563eb'/%3E%3C/svg%3E">
+
+  <link rel="stylesheet" href="style.css?v=15">
+  <link rel="stylesheet" href="tool.css?v=14">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a href="index.html" class="logo" style="text-decoration: none;">
+      <svg width="40" height="40" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#2563eb"/>
+            <stop offset="100%" style="stop-color:#7c3aed"/>
+          </linearGradient>
+        </defs>
+        <rect x="2" y="2" width="28" height="28" rx="8" fill="url(#logoGrad)"/>
+        <path d="M10 12 L16 8 L22 12 L22 20 L16 24 L10 20 Z" fill="white" opacity="0.95"/>
+        <circle cx="16" cy="16" r="3" fill="#2563eb"/>
+      </svg>
+      <div class="logo-text">
+        <span class="logo-name">ProToolsHub</span>
+        <span class="logo-tagline" data-en="Smart Tools • Work Faster • Be Productive" data-hi="स्मार्ट टूल्स • तेज़ काम • ज़्यादा उत्पादक">Smart Tools • Work Faster • Be Productive</span>
+      </div>
+    </a>
+    <nav>
+      <a href="index.html" data-en="Home" data-hi="होम">Home</a>
+      <a href="index.html#tools" data-en="Categories" data-hi="श्रेणियाँ">Categories</a>
+      <a href="index.html#products" data-en="Products" data-hi="उत्पाद">Products</a>
+      <a href="index.html#contact" data-en="Contact" data-hi="संपर्क">Contact</a>
+    </nav>
+    <div class="lang-selector">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="hi">हिं</button>
+    </div>
+    <button id="themeToggle" class="theme-toggle" title="Toggle Dark Mode">
+      <span id="themeIcon">🌙</span>
+    </button>
+  </header>
+
+  <!-- TOOL HERO -->
+  <section class="tool-hero">
+    <a href="index.html#tools" class="back-link" data-en="← Back to Tools" data-hi="← टूल्स पर वापस जाएँ">← Back to Tools</a>
+    <h1 data-en="⏱️ Stopwatch & Timer" data-hi="⏱️ स्टॉपवॉच और टाइमर">⏱️ Stopwatch & Timer</h1>
+    <p data-en="Track time with lap feature or set countdown timer with alarm." data-hi="लैप फ़ीचर के साथ समय ट्रैक करें या अलार्म के साथ उलटी गिनती टाइमर सेट करें।">Track time with lap feature or set countdown timer with alarm.</p>
+  </section>
+
+  <!-- TOOL MAIN -->
+  <section class="tool-container">
+
+    <!-- Tabs -->
+    <div class="sw-tabs">
+      <button class="sw-tab active" data-tab="stopwatch" data-en="⏱️ Stopwatch" data-hi="⏱️ स्टॉपवॉच">⏱️ Stopwatch</button>
+      <button class="sw-tab" data-tab="timer" data-en="⏳ Timer" data-hi="⏳ टाइमर">⏳ Timer</button>
+    </div>
+
+    <!-- ===== STOPWATCH ===== -->
+    <div id="tab-stopwatch" class="sw-panel active">
+      <div class="tool-box">
+        <div class="sw-display" id="swDisplay">00:00:00.00</div>
+
+        <div class="sw-controls">
+          <button id="swStartBtn" class="btn-secondary" data-en="▶️ Start" data-hi="▶️ शुरू">▶️ Start</button>
+          <button id="swPauseBtn" class="btn-secondary" data-en="⏸️ Pause" data-hi="⏸️ रोकें" style="display:none;">⏸️ Pause</button>
+          <button id="swLapBtn" class="btn-secondary" data-en="🏁 Lap" data-hi="🏁 लैप">🏁 Lap</button>
+          <button id="swResetBtn" class="btn-danger" data-en="🔄 Reset" data-hi="🔄 रीसेट">🔄 Reset</button>
+        </div>
+
+        <div class="sw-laps" id="swLaps">
+          <!-- Lap list -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== TIMER ===== -->
+    <div id="tab-timer" class="sw-panel">
+      <div class="tool-box">
+        <div class="timer-inputs">
+          <div class="input-group">
+            <label data-en="Hours" data-hi="घंटे">Hours</label>
+            <input type="number" id="timerHours" min="0" max="99" value="0">
+          </div>
+          <div class="input-group">
+            <label data-en="Minutes" data-hi="मिनट">Minutes</label>
+            <input type="number" id="timerMinutes" min="0" max="59" value="5">
+          </div>
+          <div class="input-group">
+            <label data-en="Seconds" data-hi="सेकंड">Seconds</label>
+            <input type="number" id="timerSeconds" min="0" max="59" value="0">
+          </div>
+        </div>
+
+        <div class="sw-display" id="timerDisplay">00:05:00</div>
+
+        <div class="sw-controls">
+          <button id="timerStartBtn" class="btn-secondary" data-en="▶️ Start" data-hi="▶️ शुरू">▶️ Start</button>
+          <button id="timerPauseBtn" class="btn-secondary" data-en="⏸️ Pause" data-hi="⏸️ रोकें" style="display:none;">⏸️ Pause</button>
+          <button id="timerResetBtn" class="btn-danger" data-en="🔄 Reset" data-hi="🔄 रीसेट">🔄 Reset</button>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© <span id="year"></span> ProToolsHub. <span data-en="All rights reserved." data-hi="सर्वाधिकार सुरक्षित।">All rights reserved.</span></p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>trackToolView("stopwatch-timer", "Stopwatch & Timer", "images/16hero.png");</script>
+  <script src="stopwatch-timer.js"></script>
+</body>
+</html>

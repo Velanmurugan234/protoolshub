@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced BMI Calculator - ProToolsHub</title>
+  <meta name="description" content="Advanced BMI Calculator with BMR, TDEE, body fat %, ideal weight, macro split, water intake and more. Works offline.">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%232563eb'/%3E%3Cstop offset='100%25' stop-color='%237c3aed'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='url(%23g)'/%3E%3Cpath d='M10 12 L16 8 L22 12 L22 20 L16 24 L10 20 Z' fill='white'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%232563eb'/%3E%3C/svg%3E">
+
+  <link rel="stylesheet" href="style.css?v=11">
+  <link rel="stylesheet" href="tool.css?v=11">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a href="index.html" class="logo" style="text-decoration: none;">
+      <svg width="40" height="40" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#2563eb"/>
+            <stop offset="100%" style="stop-color:#7c3aed"/>
+          </linearGradient>
+        </defs>
+        <rect x="2" y="2" width="28" height="28" rx="8" fill="url(#logoGrad)"/>
+        <path d="M10 12 L16 8 L22 12 L22 20 L16 24 L10 20 Z" fill="white" opacity="0.95"/>
+        <circle cx="16" cy="16" r="3" fill="#2563eb"/>
+      </svg>
+      <div class="logo-text">
+        <span class="logo-name">ProToolsHub</span>
+        <span class="logo-tagline">Smart Tools • Work Faster • Be Productive</span>
+      </div>
+    </a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html#tools">Categories</a>
+      <a href="index.html#products">Products</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <button id="themeToggle" class="theme-toggle" title="Toggle Dark Mode">
+      <span id="themeIcon">🌙</span>
+    </button>
+  </header>
+
+  <!-- TOOL HERO -->
+  <section class="tool-hero">
+    <a href="index.html#tools" class="back-link">← Back to Tools</a>
+    <h1>⚖️ Advanced BMI Calculator</h1>
+    <p>Complete health analysis — BMI, BMR, TDEE, body fat, ideal weight and much more.</p>
+  </section>
+
+  <!-- TOOL MAIN -->
+  <section class="tool-container">
+
+    <!-- TABS -->
+    <div class="age-tabs">
+      <button class="age-tab active" data-tab="calc">⚖️ Calculator</button>
+      <button class="age-tab" data-tab="history">📊 History</button>
+      <button class="age-tab" data-tab="info">ℹ️ About</button>
+    </div>
+
+    <!-- TAB 1: CALCULATOR -->
+    <div id="tab-calc" class="age-tab-content active">
+
+      <!-- Unit Toggle -->
+      <div class="unit-toggle">
+        <button id="unitMetric" class="unit-btn active">Metric (kg / cm)</button>
+        <button id="unitImperial" class="unit-btn">Imperial (lb / ft)</button>
+      </div>
+
+      <!-- Input Box -->
+      <div class="tool-box">
+        <div class="bmi-inputs-grid">
+          <div class="input-group">
+            <label for="age">Age (years)</label>
+            <input type="number" id="age" placeholder="25" min="2" max="120">
+          </div>
+          <div class="input-group">
+            <label for="gender">Gender</label>
+            <select id="gender">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+          <div class="input-group" id="heightMetricGroup">
+            <label for="heightCm">Height (cm)</label>
+            <input type="number" id="heightCm" placeholder="170" min="50" max="250">
+          </div>
+          <div class="input-group" id="heightImperialGroup" style="display:none;">
+            <label for="heightFt">Height (ft / in)</label>
+            <div class="ft-in-row">
+              <input type="number" id="heightFt" placeholder="5" min="1" max="8">
+              <span>ft</span>
+              <input type="number" id="heightIn" placeholder="7" min="0" max="11">
+              <span>in</span>
+            </div>
+          </div>
+          <div class="input-group" id="weightMetricGroup">
+            <label for="weightKg">Weight (kg)</label>
+            <input type="number" id="weightKg" placeholder="70" min="10" max="500">
+          </div>
+          <div class="input-group" id="weightImperialGroup" style="display:none;">
+            <label for="weightLb">Weight (lb)</label>
+            <input type="number" id="weightLb" placeholder="154" min="20" max="1100">
+          </div>
+          <div class="input-group">
+            <label for="waist">Waist (cm) <small>(optional)</small></label>
+            <input type="number" id="waist" placeholder="80">
+          </div>
+          <div class="input-group">
+            <label for="hip">Hip (cm) <small>(optional)</small></label>
+            <input type="number" id="hip" placeholder="95">
+          </div>
+        </div>
+
+        <div class="tool-actions" style="justify-content:center;">
+          <button id="calculateBtn" class="btn-secondary">🎯 Calculate</button>
+          <button id="saveBtn" class="btn-secondary">💾 Save Profile</button>
+          <button id="resetBtn" class="btn-danger">🗑️ Reset</button>
+        </div>
+      </div>
+
+      <!-- RESULTS -->
+      <div id="resultBox" style="display:none;">
+
+        <!-- Main BMI Result -->
+        <div class="bmi-main-result" id="bmiMainResult">
+          <p class="age-label">Your BMI</p>
+          <div class="bmi-value" id="bmiValue">0</div>
+          <div class="bmi-category" id="bmiCategory">—</div>
+          <p class="bmi-sub" id="bmiSub">—</p>
+        </div>
+
+        <!-- BMI Gauge -->
+        <div class="bmi-gauge-wrap">
+          <div class="bmi-gauge-bar">
+            <div class="bmi-gauge-segment seg1"></div>
+            <div class="bmi-gauge-segment seg2"></div>
+            <div class="bmi-gauge-segment seg3"></div>
+            <div class="bmi-gauge-segment seg4"></div>
+            <div class="bmi-gauge-pointer" id="gaugePointer">▼</div>
+          </div>
+          <div class="bmi-gauge-labels">
+            <span>Under<br>&lt;18.5</span>
+            <span>Normal<br>18.5-24.9</span>
+            <span>Over<br>25-29.9</span>
+            <span>Obese<br>30+</span>
+          </div>
+        </div>
+
+        <!-- Healthy Range & Target -->
+        <div class="age-info-grid">
+          <div class="age-info-card">
+            <div class="age-info-icon">🎯</div>
+            <div class="age-info-title">Healthy Weight</div>
+            <div class="age-info-value" id="healthyRange">—</div>
+          </div>
+          <div class="age-info-card">
+            <div class="age-info-icon">⚖️</div>
+            <div class="age-info-title">Target Weight</div>
+            <div class="age-info-value" id="targetWeight">—</div>
+          </div>
+          <div class="age-info-card">
+            <div class="age-info-icon">🔥</div>
+            <div class="age-info-title">BMR</div>
+            <div class="age-info-value" id="bmr">—</div>
+          </div>
+          <div class="age-info-card">
+            <div class="age-info-icon">⚡</div>
+            <div class="age-info-title">TDEE</div>
+            <div class="age-info-value" id="tdee">—</div>
+          </div>
+        </div>
+
+        <!-- Calorie Goals -->
+        <div class="tool-box">
+          <h3 style="margin-bottom:20px; color:#111827;">🎯 Daily Calorie Goals</h3>
+          <div class="age-info-grid">
+            <div class="age-info-card calorie-card calorie-lose">
+              <div class="age-info-icon">📉</div>
+              <div class="age-info-title">Lose Weight</div>
+              <div class="age-info-value" id="calLose">—</div>
+            </div>
+            <div class="age-info-card calorie-card calorie-maintain">
+              <div class="age-info-icon">⚖️</div>
+              <div class="age-info-title">Maintain</div>
+              <div class="age-info-value" id="calMaintain">—</div>
+            </div>
+            <div class="age-info-card calorie-card calorie-gain">
+              <div class="age-info-icon">📈</div>
+              <div class="age-info-title">Gain Weight</div>
+              <div class="age-info-value" id="calGain">—</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Body Composition -->
+        <div class="tool-box">
+          <h3 style="margin-bottom:20px; color:#111827;">💪 Body Composition</h3>
+          <div class="age-info-grid">
+            <div class="age-info-card">
+              <div class="age-info-icon">🧬</div>
+              <div class="age-info-title">Body Fat %</div>
+              <div class="age-info-value" id="bodyFat">—</div>
+            </div>
+            <div class="age-info-card">
+              <div class="age-info-icon">💪</div>
+              <div class="age-info-title">Lean Mass</div>
+              <div class="age-info-value" id="leanMass">—</div>
+            </div>
+            <div class="age-info-card">
+              <div class="age-info-icon">📏</div>
+              <div class="age-info-title">Waist/Height</div>
+              <div class="age-info-value" id="waistHeight">—</div>
+            </div>
+            <div class="age-info-card">
+              <div class="age-info-icon">📐</div>
+              <div class="age-info-title">Waist/Hip</div>
+              <div class="age-info-value" id="waistHip">—</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ideal Weight Formulas -->
+        <div class="tool-box">
+          <h3 style="margin-bottom:20px; color:#111827;">🎯 Ideal Weight (Multiple Formulas)</h3>
+          <div class="age-info-grid">
+            <div class="age-info-card">
+              <div class="age-info-icon">1️⃣</div>
+              <div class="age-info-title">Devine</div>
+              <div class="age-info-value" id="idealDevine">—</div>
+            </div>
+            <div class="age-info-card">
+              <div class="age-info-icon">2️⃣</div>
+              <div class="age-info-title">Robinson</div>
+              <div class="age-info-value" id="idealRobinson">—</div>
+            </div>
+            <div class="age-info-card">
+              <div class="age-info-icon">3️⃣</div>
+              <div class="age-info-title">Miller</div>
+              <div class="age-info-value" id="idealMiller">—</div>
+            </div>
+            <div class="age-info-card">
+              <div class="age-info-icon">4️⃣</div>
+              <div class="age-info-title">Hamwi</div>
+              <div class="age-info-value" id="idealHamwi">—</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Water & Macros -->
+        <div class="tool-box">
+          <h3 style="margin-bottom:20px; color:#111827;">💧 Daily Water & 🍽️ Macros</h3>
+          <div class="age-info-grid">
+            <div class="age-info-card">
+              <div class="age-info-icon">💧</div>
+              <div class="age-info-title">Water Intake</div>
+              <div class="age-info-value" id="waterIntake">—</div>
+            </div>
+            <div class="age-info-card">
+              <div class="age-info-icon">🥩</div>
+              <div class="age-info-title">Protein</div>
+              <div class="age-info-value" id="macroProtein">—</div>
+            </div>
+            <div class="age-info-card">
+              <div class="age-info-icon">🍚</div>
+              <div class="age-info-title">Carbs</div>
+              <div class="age-info-value" id="macroCarbs">—</div>
+            </div>
+            <div class="age-info-card">
+              <div class="age-info-icon">🥑</div>
+              <div class="age-info-title">Fats</div>
+              <div class="age-info-value" id="macroFats">—</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Health Tip -->
+        <div class="bmi-tip-box" id="healthTip">
+          <p>💡 <strong>Tip:</strong> <span id="tipText">—</span></p>
+        </div>
+
+        <!-- Actions -->
+        <div class="tool-actions" style="justify-content:center; margin-top:20px;">
+          <button id="shareBtn" class="btn-secondary">📤 Share Result</button>
+          <button id="copyBtn" class="btn-secondary">📋 Copy Result</button>
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="medical-disclaimer">
+          ⚠️ <strong>Medical Disclaimer:</strong> This tool provides general health information only. It is <strong>not a substitute for professional medical advice</strong>. Consult a doctor or dietitian before making health decisions.
+        </div>
+
+      </div>
+    </div>
+
+    <!-- TAB 2: HISTORY -->
+    <div id="tab-history" class="age-tab-content">
+      <div class="tool-box">
+        <h3 style="margin-bottom:20px; color:#111827;">📊 Saved Profiles</h3>
+        <div id="profilesList">
+          <p style="text-align:center; color:#6b7280; padding:30px;">No profiles saved yet. Calculate BMI and click "Save Profile".</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: ABOUT -->
+    <div id="tab-info" class="age-tab-content">
+      <div class="tool-box">
+        <h3 style="margin-bottom:15px; color:#111827;">📐 BMI Formula</h3>
+        <p style="color:#6b7280; margin-bottom:20px;">BMI = weight (kg) ÷ height² (m²)</p>
+
+        <h3 style="margin-bottom:15px; color:#111827;">📊 BMI Categories (WHO)</h3>
+        <ul style="color:#6b7280; padding-left:20px; line-height:2;">
+          <li><strong>Underweight:</strong> Below 18.5</li>
+          <li><strong>Normal weight:</strong> 18.5 – 24.9</li>
+          <li><strong>Overweight:</strong> 25.0 – 29.9</li>
+          <li><strong>Obese:</strong> 30.0 and above</li>
+        </ul>
+
+        <h3 style="margin:20px 0 15px; color:#111827;">⚠️ BMI Limitations</h3>
+        <p style="color:#6b7280;">BMI does not distinguish between muscle and fat. Athletes may have high BMI but low body fat. Always consult a healthcare provider.</p>
+
+        <h3 style="margin:20px 0 15px; color:#111827;">📚 Sources</h3>
+        <ul style="color:#6b7280; padding-left:20px; line-height:2;">
+          <li>World Health Organization (WHO)</li>
+          <li>Centers for Disease Control (CDC)</li>
+          <li>National Institutes of Health (NIH)</li>
+        </ul>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© <span id="year"></span> ProToolsHub. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>trackToolView("bmi-calculator", "BMI Calculator", "images/12hero.png");</script>
+  <script src="bmi-calculator.js"></script>
+</body>
+</html>

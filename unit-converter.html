@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit Converter - ProToolsHub</title>
+  <meta name="description" content="Free online unit converter. Convert length, weight, temperature, area, volume, speed and time units instantly.">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%232563eb'/%3E%3Cstop offset='100%25' stop-color='%237c3aed'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='url(%23g)'/%3E%3Cpath d='M10 12 L16 8 L22 12 L22 20 L16 24 L10 20 Z' fill='white'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%232563eb'/%3E%3C/svg%3E">
+
+  <link rel="stylesheet" href="style.css?v=14">
+  <link rel="stylesheet" href="tool.css?v=13">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a href="index.html" class="logo" style="text-decoration: none;">
+      <svg width="40" height="40" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#2563eb"/>
+            <stop offset="100%" style="stop-color:#7c3aed"/>
+          </linearGradient>
+        </defs>
+        <rect x="2" y="2" width="28" height="28" rx="8" fill="url(#logoGrad)"/>
+        <path d="M10 12 L16 8 L22 12 L22 20 L16 24 L10 20 Z" fill="white" opacity="0.95"/>
+        <circle cx="16" cy="16" r="3" fill="#2563eb"/>
+      </svg>
+      <div class="logo-text">
+        <span class="logo-name">ProToolsHub</span>
+        <span class="logo-tagline" data-en="Smart Tools • Work Faster • Be Productive" data-hi="स्मार्ट टूल्स • तेज़ काम • ज़्यादा उत्पादक">Smart Tools • Work Faster • Be Productive</span>
+      </div>
+    </a>
+    <nav>
+      <a href="index.html" data-en="Home" data-hi="होम">Home</a>
+      <a href="index.html#tools" data-en="Categories" data-hi="श्रेणियाँ">Categories</a>
+      <a href="index.html#products" data-en="Products" data-hi="उत्पाद">Products</a>
+      <a href="index.html#contact" data-en="Contact" data-hi="संपर्क">Contact</a>
+    </nav>
+    <div class="lang-selector">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="hi">हिं</button>
+    </div>
+    <button id="themeToggle" class="theme-toggle" title="Toggle Dark Mode">
+      <span id="themeIcon">🌙</span>
+    </button>
+  </header>
+
+  <!-- TOOL HERO -->
+  <section class="tool-hero">
+    <a href="index.html#tools" class="back-link" data-en="← Back to Tools" data-hi="← टूल्स पर वापस जाएँ">← Back to Tools</a>
+    <h1 data-en="🔄 Unit Converter" data-hi="🔄 यूनिट कन्वर्टर">🔄 Unit Converter</h1>
+    <p data-en="Convert length, weight, temperature, area, volume, speed and time instantly." data-hi="लंबाई, वज़न, तापमान, क्षेत्र, आयतन, गति और समय तुरंत बदलें।">Convert length, weight, temperature, area, volume, speed and time instantly.</p>
+  </section>
+
+  <!-- TOOL MAIN -->
+  <section class="tool-container">
+
+    <!-- Category Selector -->
+    <div class="unit-categories">
+      <button class="unit-cat-btn active" data-cat="length">📏 <span data-en="Length" data-hi="लंबाई">Length</span></button>
+      <button class="unit-cat-btn" data-cat="weight">⚖️ <span data-en="Weight" data-hi="वज़न">Weight</span></button>
+      <button class="unit-cat-btn" data-cat="temperature">🌡️ <span data-en="Temperature" data-hi="तापमान">Temperature</span></button>
+      <button class="unit-cat-btn" data-cat="area">📐 <span data-en="Area" data-hi="क्षेत्र">Area</span></button>
+      <button class="unit-cat-btn" data-cat="volume">🧪 <span data-en="Volume" data-hi="आयतन">Volume</span></button>
+      <button class="unit-cat-btn" data-cat="speed">🏎️ <span data-en="Speed" data-hi="गति">Speed</span></button>
+      <button class="unit-cat-btn" data-cat="time">⏰ <span data-en="Time" data-hi="समय">Time</span></button>
+      <button class="unit-cat-btn" data-cat="data">💾 <span data-en="Data" data-hi="डेटा">Data</span></button>
+    </div>
+
+    <!-- Converter Box -->
+    <div class="tool-box">
+      <div class="converter-row">
+        <div class="input-group">
+          <label data-en="From" data-hi="से">From</label>
+          <input type="number" id="fromValue" placeholder="1" step="any">
+          <select id="fromUnit"></select>
+        </div>
+
+        <button id="swapBtn" class="swap-btn" title="Swap Units">⇅</button>
+
+        <div class="input-group">
+          <label data-en="To" data-hi="को">To</label>
+          <input type="number" id="toValue" placeholder="0" readonly>
+          <select id="toUnit"></select>
+        </div>
+      </div>
+
+      <div class="converter-result" id="converterResult">
+        <span id="resultText">—</span>
+      </div>
+
+      <div class="tool-actions" style="justify-content:center;">
+        <button id="copyConvBtn" class="btn-secondary">📋 <span data-en="Copy Result" data-hi="परिणाम कॉपी करें">Copy Result</span></button>
+        <button id="resetConvBtn" class="btn-danger">🗑️ <span data-en="Reset" data-hi="रीसेट">Reset</span></button>
+      </div>
+    </div>
+
+    <!-- Quick Reference -->
+    <div class="tool-box">
+      <h3 style="margin-bottom:15px; color:#111827;" data-en="📐 Quick Conversions" data-hi="📐 त्वरित रूपांतरण">📐 Quick Conversions</h3>
+      <div class="quick-ref" id="quickRef"></div>
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© <span id="year"></span> ProToolsHub. <span data-en="All rights reserved." data-hi="सर्वाधिकार सुरक्षित।">All rights reserved.</span></p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>trackToolView("unit-converter", "Unit Converter", "images/15hero.png");</script>
+  <script src="unit-converter.js"></script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Number Generator - ProToolsHub</title>
+  <meta name="description" content="Free online random number generator. Generate random numbers, dice rolls, lottery picks, and more.">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%232563eb'/%3E%3Cstop offset='100%25' stop-color='%237c3aed'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='url(%23g)'/%3E%3Cpath d='M10 12 L16 8 L22 12 L22 20 L16 24 L10 20 Z' fill='white'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%232563eb'/%3E%3C/svg%3E">
+
+  <link rel="stylesheet" href="style.css?v=16">
+  <link rel="stylesheet" href="tool.css?v=15">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a href="index.html" class="logo" style="text-decoration: none;">
+      <svg width="40" height="40" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#2563eb"/>
+            <stop offset="100%" style="stop-color:#7c3aed"/>
+          </linearGradient>
+        </defs>
+        <rect x="2" y="2" width="28" height="28" rx="8" fill="url(#logoGrad)"/>
+        <path d="M10 12 L16 8 L22 12 L22 20 L16 24 L10 20 Z" fill="white" opacity="0.95"/>
+        <circle cx="16" cy="16" r="3" fill="#2563eb"/>
+      </svg>
+      <div class="logo-text">
+        <span class="logo-name">ProToolsHub</span>
+        <span class="logo-tagline" data-en="Smart Tools • Work Faster • Be Productive" data-hi="स्मार्ट टूल्स • तेज़ काम • ज़्यादा उत्पादक">Smart Tools • Work Faster • Be Productive</span>
+      </div>
+    </a>
+    <nav>
+      <a href="index.html" data-en="Home" data-hi="होम">Home</a>
+      <a href="index.html#tools" data-en="Categories" data-hi="श्रेणियाँ">Categories</a>
+      <a href="index.html#products" data-en="Products" data-hi="उत्पाद">Products</a>
+      <a href="index.html#contact" data-en="Contact" data-hi="संपर्क">Contact</a>
+    </nav>
+    <div class="lang-selector">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="hi">हिं</button>
+    </div>
+    <button id="themeToggle" class="theme-toggle" title="Toggle Dark Mode">
+      <span id="themeIcon">🌙</span>
+    </button>
+  </header>
+
+  <!-- TOOL HERO -->
+  <section class="tool-hero">
+    <a href="index.html#tools" class="back-link" data-en="← Back to Tools" data-hi="← टूल्स पर वापस जाएँ">← Back to Tools</a>
+    <h1 data-en="🎲 Random Number Generator" data-hi="🎲 रैंडम नंबर जेनरेटर">🎲 Random Number Generator</h1>
+    <p data-en="Generate random numbers, dice rolls, lottery picks, and more — instantly." data-hi="रैंडम नंबर, डाइस रोल, लॉटरी पिक — तुरंत जनरेट करें।">Generate random numbers, dice rolls, lottery picks, and more — instantly.</p>
+  </section>
+
+  <!-- TOOL MAIN -->
+  <section class="tool-container">
+
+    <!-- Tabs -->
+    <div class="sw-tabs">
+      <button class="sw-tab active" data-tab="number" data-en="🔢 Number" data-hi="🔢 नंबर">🔢 Number</button>
+      <button class="sw-tab" data-tab="dice" data-en="🎲 Dice" data-hi="🎲 डाइस">🎲 Dice</button>
+      <button class="sw-tab" data-tab="coin" data-en="🪙 Coin Flip" data-hi="🪙 सिक्का उछालें">🪙 Coin Flip</button>
+      <button class="sw-tab" data-tab="pick" data-en="🎯 Pick from List" data-hi="🎯 लिस्ट से चुनें">🎯 Pick from List</button>
+    </div>
+
+    <!-- ===== NUMBER ===== -->
+    <div id="tab-number" class="sw-panel active">
+      <div class="tool-box">
+        <div class="bmi-inputs-grid">
+          <div class="input-group">
+            <label data-en="Minimum" data-hi="न्यूनतम">Minimum</label>
+            <input type="number" id="rngMin" value="1">
+          </div>
+          <div class="input-group">
+            <label data-en="Maximum" data-hi="अधिकतम">Maximum</label>
+            <input type="number" id="rngMax" value="100">
+          </div>
+          <div class="input-group">
+            <label data-en="How Many Numbers?" data-hi="कितने नंबर?">How Many Numbers?</label>
+            <input type="number" id="rngCount" value="1" min="1" max="100">
+          </div>
+          <div class="input-group">
+            <label data-en="Allow Duplicates?" data-hi="डुप्लिकेट allowed?">Allow Duplicates?</label>
+            <select id="rngUnique">
+              <option value="yes" data-en="Yes" data-hi="हाँ">Yes</option>
+              <option value="no" data-en="No (Unique)" data-hi="नहीं (यूनिक)">No (Unique)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="tool-actions" style="justify-content:center;">
+          <button id="rngGenerateBtn" class="btn-secondary" data-en="🎲 Generate" data-hi="🎲 जनरेट करें">🎲 Generate</button>
+          <button id="rngResetBtn" class="btn-danger" data-en="🗑️ Reset" data-hi="🗑️ रीसेट">🗑️ Reset</button>
+        </div>
+
+        <div id="rngResultBox" style="display:none; margin-top:25px;">
+          <div class="rng-result-main" id="rngResult">—</div>
+          <div class="tool-actions" style="justify-content:center; margin-top:15px;">
+            <button id="rngCopyBtn" class="btn-secondary" data-en="📋 Copy" data-hi="📋 कॉपी">📋 Copy</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== DICE ===== -->
+    <div id="tab-dice" class="sw-panel">
+      <div class="tool-box">
+        <div class="bmi-inputs-grid">
+          <div class="input-group">
+            <label data-en="Number of Dice" data-hi="डाइस की संख्या">Number of Dice</label>
+            <input type="number" id="diceCount" value="1" min="1" max="10">
+          </div>
+          <div class="input-group">
+            <label data-en="Number of Sides" data-hi="साइड की संख्या">Number of Sides</label>
+            <select id="diceSides">
+              <option value="6">D6 (6 sides)</option>
+              <option value="4">D4 (4 sides)</option>
+              <option value="8">D8 (8 sides)</option>
+              <option value="10">D10 (10 sides)</option>
+              <option value="12">D12 (12 sides)</option>
+              <option value="20">D20 (20 sides)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="tool-actions" style="justify-content:center;">
+          <button id="diceRollBtn" class="btn-secondary" data-en="🎲 Roll Dice" data-hi="🎲 डाइस रोल करें">🎲 Roll Dice</button>
+        </div>
+
+        <div id="diceResultBox" style="display:none; margin-top:25px;">
+          <div class="dice-display" id="diceDisplay"></div>
+          <div class="rng-result-main" id="diceTotal">—</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== COIN ===== -->
+    <div id="tab-coin" class="sw-panel">
+      <div class="tool-box" style="text-align:center;">
+        <div class="coin-display" id="coinDisplay">🪙</div>
+        <div class="rng-result-main" id="coinResult" style="margin-top:20px;">—</div>
+
+        <div class="tool-actions" style="justify-content:center; margin-top:20px;">
+          <button id="coinFlipBtn" class="btn-secondary" data-en="🪙 Flip Coin" data-hi="🪙 सिक्का उछालें">🪙 Flip Coin</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== PICK FROM LIST ===== -->
+    <div id="tab-pick" class="sw-panel">
+      <div class="tool-box">
+        <label style="display:block; margin-bottom:10px; font-weight:600; color:#374151;" data-en="Enter items (one per line):" data-hi="आइटम डालें (एक लाइन में एक):">Enter items (one per line):</label>
+        <textarea id="pickList" placeholder="Apple&#10;Banana&#10;Mango&#10;Orange" style="min-height:180px;"></textarea>
+
+        <div class="tool-actions" style="justify-content:center;">
+          <button id="pickBtn" class="btn-secondary" data-en="🎯 Pick Random" data-hi="🎯 रैंडम चुनें">🎯 Pick Random</button>
+          <button id="shuffleBtn" class="btn-secondary" data-en="🔀 Shuffle All" data-hi="🔀 सब शफल करें">🔀 Shuffle All</button>
+        </div>
+
+        <div id="pickResultBox" style="display:none; margin-top:25px;">
+          <div class="rng-result-main" id="pickResult">—</div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© <span id="year"></span> ProToolsHub. <span data-en="All rights reserved." data-hi="सर्वाधिकार सुरक्षित।">All rights reserved.</span></p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>trackToolView("random-number-generator", "Random Number Generator", "images/17hero.png");</script>
+  <script src="random-number-generator.js"></script>
+</body>
+</html>
